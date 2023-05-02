@@ -1,10 +1,13 @@
 import scrapy
 import csv
 import datetime
+from scrapy.crawler import CrawlerProcess
+import pandas as pd
+
 class GenericTableSpider(scrapy.Spider):
     name = 'generic_table'
     start_urls = ['https://www.bls.gov/lau/tables.htm']
-
+    #print('test')
     def parse(self, response):
         #self.logger.debug(response.text)  # print the page source to check if it's correct
 
@@ -39,7 +42,7 @@ class GenericTableSpider(scrapy.Spider):
             yield data
 
         self.logger.info('Finished scraping')
-
+        '''
         # Write the data to a CSV file
         date_time = datetime.datetime.now()
         filename = 'table_data'+str(date_time)+'.csv'
@@ -48,4 +51,15 @@ class GenericTableSpider(scrapy.Spider):
             writer.writeheader()
             for data in response.xpath('//table[@class="regular"]//tr[position()>1]'):
                 writer.writerow({headers[j]: cell.xpath('.//text()').get() for j, cell in enumerate(data.xpath('td'))})
-        self.logger.info('Saved data to {}'.format(filename))
+        self.logger.info('Saved data to {}'.format(filename))'''
+
+filename = "senior_project\senior_project\CSVs\LAU_Auto_" + str(datetime.date.today())
+process = CrawlerProcess(settings={
+    "FEEDS": {
+        "{}.json".format(filename): {
+        'format': 'json'}
+    },
+})
+
+process.crawl(GenericTableSpider)
+process.start() # the script will block here until the crawling is finished

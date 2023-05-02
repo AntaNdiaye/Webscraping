@@ -1,5 +1,7 @@
 import scrapy
-
+from scrapy.crawler import CrawlerProcess
+import pathlib
+import datetime
 class LAUDataSpider(scrapy.Spider):
     name = 'LAU_data'
     start_urls = ['https://www.bls.gov/web/laus/lauhsthl.htm']
@@ -20,3 +22,14 @@ class LAUDataSpider(scrapy.Spider):
                 'Historical Low Rate': row.xpath('td[5]//text()').get(),
             }
         self.logger.info('Finished scraping')  # log when the spider is finished
+
+filename = "senior_project\senior_project\CSVs\LAU_Data_" + str(datetime.date.today())
+process = CrawlerProcess(settings={
+    "FEEDS": {
+        "{}.csv".format(filename): {
+        'format': 'csv'}
+    },
+})
+
+process.crawl(LAUDataSpider)
+process.start() # the script will block here until the crawling is finished

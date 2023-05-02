@@ -37,9 +37,8 @@ for i in codes:
   results_df = pd.DataFrame.from_records(results)
   #print(results_df.head())
 
-  c_date = datetime.date.today()
-  filename = i + str(c_date)
-  filepath = Path('E:\School Stuff\Web Scraper\CSVs\{}.csv'.format(filename))
+  filename = i + "_" + str(datetime.date.today())
+  filepath = Path("C:\\Users\\Blake's PC\\Documents\\GitHub\\Webscraping\\senior_project\\senior_project\\CSVs\\{}.csv".format(filename))
 
   filepath.parent.mkdir(parents=True, exist_ok=True)  
   results_df.to_csv(filepath) 

@@ -62,4 +62,4 @@ process = CrawlerProcess(settings={
 })
 
 process.crawl(GenericTableSpider)
-process.start(stop_after_crawl=False) # the script will continue running until it is manually stopped. Anything after this will not run.
+process.start(stop_after_crawl=False) #the script will continue running until it is manually stopped. Anything after this will not run.

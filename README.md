@@ -1,5 +1,5 @@
 # Webscraping
-COSC490 Senior Project Submition
+COSC490 Senior Project Submission
 This is a tool used to pull data from the Open Data Network using the Socrata Api, and scrape the Bureau of Labor Statistics website to get data tables to upload onto the EIDC Redivis database.
 
 Every tables is labeled in the format of [table source abbreviated]_[YYYY-MM-DD], with the date being the date of access.

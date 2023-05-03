@@ -52,4 +52,4 @@ process = CrawlerProcess(settings={
 })
 
 process.crawl(GenericTableSpider)
-process.start() # the script will block here until the crawling is finished
+process.start()

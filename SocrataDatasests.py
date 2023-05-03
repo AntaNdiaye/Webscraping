@@ -26,7 +26,6 @@ for i in codes:
   results = client.get(codes[i][0], limit=2000) #data table limited for testsing purposes, remove for proper use.
   client.close()
   results_df = pd.DataFrame.from_records(results)
-  #print(results_df.head())
 
   filename = i + "_" + str(datetime.date.today())
   filepath = Path("senior_project\\senior_project\\CSVs\\{}.csv".format(filename))

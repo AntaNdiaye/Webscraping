@@ -12,9 +12,9 @@ CDC PLACES Local data for better health 2022 and 2021 release (PLACES2021, PLACE
 
 In the future, this tool must be expanded to cover more websites and API, with the eventual goal of being to automatically update any and every dataset listed on the EIDC Redivis Platform.
 
-**To run the scripts**: 
-Download scrapy: pip install scrapy
+**To run the scripts**:
 To use the scripts either run the RunAll.py file or Use the following command lines:
+  pip install scrapy
   LAU_Data.py: scrapy runspider LAU_Data.py -o filename.csv
   LAU_tables.py: scrapy runspider LAU_tables.py
   LAU_Auto.py: scrapy runspider LAU_Auto.py

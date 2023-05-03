@@ -12,6 +12,11 @@ CDC PLACES Local data for better health 2022 and 2021 release (PLACES2021, PLACE
 
 In the future, this tool must be expanded to cover more websites and API, with the eventual goal of being to automatically update any and every dataset listed on the EIDC Redivis Platform.
 
+To run the scripts use the following command lines:
+LAU_Data.py: scrapy runspider LAU_Data.py -o filename.csv
+LAU_tables.py: scrapy runspider LAU_tables.py
+LAU_Auto.py: scrapy runspider LAU_Auto.py
+
 Known Issues:
 Issue: Occasionally, LAU_Auto.py will have the error "twisted.internet.error.ReactorNotRestartable" and will not properly scrape the tables.
 Solution: in the process.start() command, include stop_after_crawl=False, which will cause the scraper to keep running indefinitely rather than restarting for each table.

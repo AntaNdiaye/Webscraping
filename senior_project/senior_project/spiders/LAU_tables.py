@@ -1,6 +1,8 @@
 import scrapy
 import csv
 import datetime
+from scrapy.crawler import CrawlerProcess
+
 class GenericTableSpider(scrapy.Spider):
     name = 'generic_table'
 
@@ -40,3 +42,14 @@ class GenericTableSpider(scrapy.Spider):
             for data in response.xpath('//table[@class="regular"]//tr[position()>1]'):
                 writer.writerow({headers[j]: cell.xpath('.//text()').get() for j, cell in enumerate(data.xpath('td'))})
         self.logger.info('Saved data to {}'.format(filename))
+
+filename = "senior_project\senior_project\CSVs\Gen_Table_Data_" + str(datetime.date.today())
+process = CrawlerProcess(settings={
+    "FEEDS": {
+        "{}.csv".format(filename): {
+        'format': 'csv'}
+    },
+})
+
+process.crawl(GenericTableSpider)
+process.start() # the script will block here until the crawling is finished

@@ -23,7 +23,7 @@ class LAUDataSpider(scrapy.Spider):
             }
         self.logger.info('Finished scraping')  # log when the spider is finished
 
-filename = "senior_project\senior_project\CSVs\LAU_Data_" + str(datetime.date.today())
+filename = "senior_project\senior_project\CSVs\LAU_Data_Current" + str(datetime.date.today())
 process = CrawlerProcess(settings={
     "FEEDS": {
         "{}.csv".format(filename): {
